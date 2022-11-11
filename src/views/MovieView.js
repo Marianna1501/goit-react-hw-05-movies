@@ -12,10 +12,6 @@ export default function MovieView() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
 
-  //   const onGoBack = () => {
-  //     navigate( location?.state?.from ?? '/')
-  //   };
-
   useEffect(() => {
     getMovie(movieId).then(data => setMovie(data));
   }, [movieId]);

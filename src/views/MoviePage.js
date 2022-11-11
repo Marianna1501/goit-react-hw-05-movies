@@ -10,16 +10,7 @@ export default function SearchMovieList() {
 
   const location = useLocation();
   console.log(query);
-  // useEffect(() => {
-  //   getSearchMovie(query).then(result => {
-  //     console.log(result)
-  //     if (result.data.results.length === 0) {
-  //       alert('no such movie');
-  //     }
-  //     setMovies(result.data.results);
-  //   });
-  // }, [query]);
-
+  
   useEffect(() => {
     if (!location.search) {
       return;
