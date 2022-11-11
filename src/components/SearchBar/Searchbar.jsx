@@ -28,8 +28,6 @@ export  const  SearchBar =({onSubmit})=>{
         
         
     }
-
-
     return(
         <form onSubmit={handleSubmit}>
             <input 
