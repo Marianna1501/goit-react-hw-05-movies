@@ -1,19 +1,20 @@
+import { Li, Div } from './MovieDetailsNavigation.styled';
+import { useLocation } from 'react-router-dom';
 
-import {Li, Div} from './MovieDetailsNavigation.styled'
+export const MovieDetailNavigation = () => {
+  const location = useLocation();
 
-
-export const MovieDetailNavigation = ()=>{
-
-
-    return(
+  return (
     <Div>
-    <h3>Additional information</h3>
-    <ul>
-       <Li to ='cast' >Casts</Li>
-       <Li to ='reviews'>Reviews</Li>
-    </ul>
-    
+      <h3>Additional information</h3>
+      <ul>
+        <Li state={{ from: location?.state?.from ?? '/' }} to="cast">
+          Casts
+        </Li>
+        <Li state={{ from: location?.state?.from ?? '/' }} to="reviews">
+          Reviews
+        </Li>
+      </ul>
     </Div>
-    
-    )
-}
+  );
+};

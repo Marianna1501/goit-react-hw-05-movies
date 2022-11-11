@@ -3,32 +3,30 @@ import { getSearchMovie } from 'services/API';
 import { SearchBar } from 'components/SearchBar/Searchbar';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export default function SearchMovieList() {
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState(null);
+  const [params, setParams] = useSearchParams();
 
+  const param = params.get('query');
   const location = useLocation();
-  console.log(query);
-  
+
   useEffect(() => {
-    if (!location.search) {
+    if (!param) {
       return;
     }
-    setQuery(location.search.slice(7));
-  }, [location.search]);
-
-  const onSubmit = query => {
-    setQuery(query);
-    setMovies([]);
-    getSearchMovie(query).then(result => {
+    getSearchMovie(param).then(result => {
       if (result.results.length === 0) {
         alert('no such movie');
       }
       setMovies(result.results);
     });
-  };
+  }, [param]);
 
+  const onSubmit = query => {
+    setParams({ query });
+  };
   return (
     <>
       <SearchBar onSubmit={onSubmit} />

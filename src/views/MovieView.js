@@ -8,7 +8,6 @@ import { MovieCard } from 'components/MovieCard/MovieCard';
 export default function MovieView() {
   const location = useLocation();
   const navigate = useNavigate();
-
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
 
